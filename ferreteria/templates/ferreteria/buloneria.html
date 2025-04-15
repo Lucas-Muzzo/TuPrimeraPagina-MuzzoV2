@@ -1,0 +1,20 @@
+{% extends 'ferreteria/base.html' %}
+
+{% block contenido %}
+
+
+<div>
+<H2>LISTADO DE BULONES</H2>
+</div>
+
+<div>
+    <ul>
+        {% for bulon in lista_de_bulones %}
+            <li>{{ bulon }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+
+{% endblock %}
