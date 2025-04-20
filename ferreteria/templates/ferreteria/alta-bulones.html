@@ -1,0 +1,17 @@
+{% extends 'ferreteria/base.html' %}
+
+{% block contenido %}
+
+
+<div>ACA VIENE EL FORMS PARA CARGAR EL ALTA DE BULONES</div>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <button type="submit"> Enviar formulario </button>
+
+
+</form>
+
+
+{% endblock %}
