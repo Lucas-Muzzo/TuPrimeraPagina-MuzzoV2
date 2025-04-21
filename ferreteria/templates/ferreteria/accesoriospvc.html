@@ -1,6 +1,20 @@
 {% extends 'ferreteria/base.html' %}
 
 {% block contenido %}
-ACA VIENEN LOS ARTICULOS DE PVC
+
+
+<h1>¡ENCONTRA LOS ARTICULOS DE PVC QUE ESTAS BUSCANDO!:</h1> 
+
+<div>
+    <ul>
+        {% for articulo in lista_de_articulos %}
+           
+                <li>{{ articulo.accesorio }} - {{ articulo.rosca}} </li>
+
+    
+        {% endfor %}
+    </ul>
+</div>
+
 {{listapvc}}
 {% endblock %}

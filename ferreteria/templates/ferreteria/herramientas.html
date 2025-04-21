@@ -3,8 +3,17 @@
 {% block contenido %}
 
 
-ACA VIENEN LAS HERRAMIENTAS
+<h1>¡ENCONTRA LAS HERRAMIENTAS QUE ESTAS BUSCANDO!:</h1> 
 
-{{lista_de_herramientas}}
+<div>
+    <ul>
+        {% for herramienta in lista_de_herramientas %}
+           
+                <li>{{ herramienta.tipo }} - {{ herramienta.marca }} </li>
+
+    
+        {% endfor %}
+    </ul>
+</div>
 
 {% endblock %}

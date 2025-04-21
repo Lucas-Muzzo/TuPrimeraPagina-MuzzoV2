@@ -10,7 +10,10 @@
 <div>
     <ul>
         {% for bulon in lista_de_bulones %}
-            <li>{{ bulon }}</li>
+           
+                <li>{{ bulon.tipo_cabeza }} - {{ bulon.tamaño_rosca }} - {{ bulon.longitud }}</li>
+
+    
         {% endfor %}
     </ul>
 </div>

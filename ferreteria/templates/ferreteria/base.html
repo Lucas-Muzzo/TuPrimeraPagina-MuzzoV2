@@ -1,11 +1,70 @@
-<h2>Ferreteria Muzzo</h2>
-<a href="{% url 'ferreteria:herramientas'%}">herramientas</a>
-<a href="{% url 'ferreteria:accesoriospvc'%}">accesoriospvc</a>
-<a href="{% url 'ferreteria:buloneria'%}">buloneria</a>
-
-
-
-{% block contenido %}
-
-
-{% endblock %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería Muzzo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #ddd;
+        }
+        section {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Ferretería Muzzo</h2>
+    <nav>
+        <ul>
+            <li><a href="{% url 'ferreteria:home' %}">Inicio</a></li>
+            <li><a href="{% url 'ferreteria:herramientas' %}">Herramientas</a></li>
+            <li><a href="{% url 'ferreteria:accesoriospvc' %}">Accesorios de PVC</a></li>
+            <li><a href="{% url 'ferreteria:buloneria' %}">Bulonería</a></li>
+            <li><a href="{% url 'ferreteria:alta-bulones' %}">Alta de Bulones</a></li>
+            <li><a href="{% url 'ferreteria:alta-herramientas' %}">Alta de Herramientas</a></li>
+            <li><a href="{% url 'ferreteria:alta-pvc' %}">Alta de Artículos PVC</a></li>
+            <li><a href="{% url 'ferreteria:buscar-bulones' %}">Búsqueda de Bulones</a></li>
+            
+        </ul>
+    </nav>
+    <section>
+        {% block contenido %}
+        {% endblock %}
+    </section>
+</body>
+</html>

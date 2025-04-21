@@ -8,3 +8,15 @@ class FerreteriaBulones(models.Model):
 
     def __str__(self):
         return self.tipo_cabeza
+
+class FerreteriaHerramientas(models.Model):
+    tipo=models.CharField(max_length=50)
+    marca=models.CharField(max_length=50)
+    def __str__(self):
+        return self.tipo
+
+class FerreteriaPvc(models.Model):
+    accesorio=models.CharField(max_length=50)
+    rosca=models.CharField(max_length=50)
+    def __str__(self):
+        return self.accesorio

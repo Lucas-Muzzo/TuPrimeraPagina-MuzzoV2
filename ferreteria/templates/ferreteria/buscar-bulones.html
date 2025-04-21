@@ -1,0 +1,54 @@
+{% extends 'ferreteria/base.html' %}
+
+{% block contenido %}
+
+
+<div>BUSQUE EL BULON QUE NECESITA DE ACUERDO AL TIPO DE CABEZA</div>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <button type="submit"> BUSCAR </button>
+
+
+</form>
+
+{% if bulones %}
+<h2>Resultados de la búsqueda:</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Tipo de Cabeza</th>
+            <th>Tamaño de Rosca</th>
+            <th>Longitud</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bulon in bulones %}
+        <tr>
+            <td>{{ bulon.tipo_cabeza }}</td>
+            <td>{{ bulon.tamaño_rosca }}</td>
+            <td>{{ bulon.longitud }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% elif errores %}
+<h2>Errores:</h2>
+<ul>
+    {% for campo, mensajes in errores.items %}
+        {% for mensaje in mensajes %}
+            <li>{{ campo }}: {{ mensaje }}</li>
+        {% endfor %}
+    {% endfor %}
+</ul>
+{% else %}
+<p>No se encontraron coincidencias.</p>
+{% endif %}
+</body>
+</html>
+
+
+
+
+{% endblock %}

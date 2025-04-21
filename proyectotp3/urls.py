@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.urls import path,include
 from django.http import HttpResponse    
 import ferreteria
-from ferreteria.views import buloneria
+from ferreteria.views import buloneria,home
+from django.shortcuts import redirect
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ferreteria/',include('ferreteria.urls'))
+    path('ferreteria/',include('ferreteria.urls')),
+    path('', lambda request: redirect('/ferreteria/', permanent=True)),
 ]

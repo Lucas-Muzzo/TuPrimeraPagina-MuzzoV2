@@ -2,7 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse    
 
 # Create your views here.
+from django.shortcuts import render
 
+def home(request):
+    return render(request, 'home.html')
 
 def buloneria(request):
     
@@ -54,9 +57,6 @@ from ferreteria.form_bulon import FerreteriaBulonesForm  # Importa el formulario
 from ferreteria.models import FerreteriaBulones    # Importa el modelo de base de datos
 from django.shortcuts import render, redirect
 
-from ferreteria.form_bulon import FerreteriaBulonesForm
-from ferreteria.models import FerreteriaBulones
-from django.shortcuts import render, redirect
 
 def alta_bulones(request):
     if request.method == "GET":
@@ -79,10 +79,144 @@ def alta_bulones(request):
             return redirect('/ferreteria/buloneria')
 
         # En caso de formulario inválido
-        lista_de_bulones = FerreteriaBulones.objects.all()
+       
+
+from django.shortcuts import render
+from ferreteria.models import FerreteriaBulones
+
+def mostrar_bulones(request):
+    bulones = FerreteriaBulones.objects.all()  # Recuperar todos los registros
+    contexto = {
+        "lista_de_bulones": bulones
+    }
+    return render(request, 'ferreteria/buloneria.html', context=contexto)
+
+
+
+
+from ferreteria.form_bulon import FerreteriaHerramientasForm
+from ferreteria.models import FerreteriaHerramientas
+from django.shortcuts import render, redirect
+
+
+
+
+
+def alta_herramientas(request):
+    if request.method == "GET":
+        formulario = FerreteriaHerramientasForm()
+        lista_de_herramientas = FerreteriaHerramientas.objects.all()  # Consulta los registros de la base de datos
         contexto = {
             'formulario': formulario,
-            'lista_de_bulones': lista_de_bulones
+            'lista_de_herramientas': lista_de_herramientas  # Incluye la lista en el contexto
         }
-        return render(request, 'ferreteria/alta-bulones.html', context=contexto)
+        return render(request, 'ferreteria/alta-herramientas.html', context=contexto)
+    else:
+        formulario = FerreteriaHerramientasForm(request.POST)
+        if formulario.is_valid():
+            modelo_de_la_base_de_datos = FerreteriaHerramientas(
+                tipo=formulario.cleaned_data['tipo'],
+                marca=formulario.cleaned_data['marca'],
+                
+            )
+            modelo_de_la_base_de_datos.save()
+            return redirect('/ferreteria/herramientas')
 
+        # En caso de formulario inválido
+        #lista_de_herramientas = FerreteriaHerramientas.objects.all()
+        #contexto = {
+           # 'formulario': formulario,
+           # 'lista_de_herramientas': lista_de_herramientas
+       # }
+       # return render(request, 'ferreteria/alta-herramientas.html', context=contexto)
+    
+
+
+def mostrar_herramienta(request):
+    herramientas_1=FerreteriaHerramientas.objects.all()
+    contexto = {
+        "lista_de_herramientas": herramientas_1
+    }
+    return render(request, 'ferreteria/herramientas.html', context=contexto)
+
+
+
+
+
+
+
+
+
+
+
+
+
+from ferreteria.form_bulon import FerreteriaPvcForm
+from ferreteria.models import FerreteriaPvc
+from django.shortcuts import render, redirect
+
+
+
+
+
+def alta_pvc(request):
+    if request.method == "GET":
+        formulario = FerreteriaPvcForm()
+        lista_de_articulos = FerreteriaPvc.objects.all()  # Consulta los registros de la base de datos
+        contexto = {
+            'formulario': formulario,
+            'lista_de_articulos': lista_de_articulos  # Incluye la lista en el contexto
+        }
+        return render(request, 'ferreteria/alta-pvc.html', context=contexto)
+    else:
+        formulario = FerreteriaPvcForm(request.POST)
+        if formulario.is_valid():
+            modelo_de_la_base_de_datos = FerreteriaPvc(
+                accesorio=formulario.cleaned_data['accesorio'],
+                rosca=formulario.cleaned_data['rosca'],
+                
+            )
+            modelo_de_la_base_de_datos.save()
+            return redirect('/ferreteria/accesoriospvc')
+
+        # En caso de formulario inválido
+        lista_de_articulos = FerreteriaPvc.objects.all()
+        contexto = {
+            'formulario': formulario,
+            'lista_de_articulos': lista_de_articulos
+        }
+        return render(request, 'ferreteria/alta-pvc.html', context=contexto)
+    
+def mostrar_articulo(request):
+    articulos_1=FerreteriaPvc.objects.all()
+    contexto = {
+        "lista_de_articulos": articulos_1
+    }
+    return render(request, 'ferreteria/accesoriospvc.html', context=contexto)
+
+
+
+from ferreteria.form_bulon import FerreteriaBuscaBulonForm
+from django.shortcuts import render
+from ferreteria.models import FerreteriaBulones  # Asegúrate de importar el modelo correspondiente
+
+def buscar_bulones(request):
+    if request.method == "GET":
+        contexto = {"formulario": FerreteriaBuscaBulonForm()}
+        return render(request, 'ferreteria/buscar-bulones.html', context=contexto)
+    else:
+        # Procesamos el formulario y devolvemos un resultado
+        formulario = FerreteriaBuscaBulonForm(request.POST)
+        contexto = {"formulario": formulario}  # Incluimos el formulario en el contexto
+
+        if formulario.is_valid():
+            tipo_cabeza = formulario.cleaned_data["tipo_cabeza"]
+            # Filtramos por tipo_cabeza
+            bulones = FerreteriaBulones.objects.filter(tipo_cabeza__icontains=tipo_cabeza)
+            # Agregamos los resultados al contexto
+            contexto["bulones"] = bulones
+        else:
+            # Incluimos los errores en caso de que el formulario no sea válido
+            contexto["errores"] = formulario.errors
+
+        return render(request, 'ferreteria/buscar-bulones.html', context=contexto)

@@ -1,0 +1,17 @@
+{% extends 'ferreteria/base.html' %}
+
+{% block contenido %}
+
+
+<div>REGISTRE LOS ATRIBUTOS DE LA HERRAMIENTA A REGISTRAR</div>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <button type="submit"> Enviar formulario </button>
+
+
+</form>
+
+
+{% endblock %}
