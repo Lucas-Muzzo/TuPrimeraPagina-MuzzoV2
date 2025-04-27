@@ -1,0 +1,21 @@
+{% extends 'ferreteria/base.html' %}
+
+{% block contenido %}
+
+<h3 style="color: steelblue; text-align: center;">📑 Lista de articulos de buloneria</h3>
+
+<ul style="max-width: 600px; margin: 2rem auto; list-style: none; padding: 0;">
+    {% for bulones in bulones %}
+        <li style="margin-bottom: 1rem;">
+            <strong>{{bulones.tipo_cabeza }}</strong> ({{bulones.tamaño_rosca }}) – {{ bulones.longitud }} mm <br>
+            <a href="{% url 'ferreteria:buloneria-detail' bulones.pk %}">🔍 Ver</a> |
+            <a href="{% url 'ferreteria:buloneria-update' bulones.pk %}">✏️ Editar</a> |
+            <a href="{% url 'ferreteria:buloneria-delete' bulones.pk %}">🗑 Eliminar</a>
+        </li>
+    {% empty %}
+        <li>No hay bulones registrados.</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

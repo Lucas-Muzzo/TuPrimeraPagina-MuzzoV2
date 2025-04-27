@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'ferreteria/home.html') 
 
 def buloneria(request):
     
@@ -220,3 +220,37 @@ def buscar_bulones(request):
             contexto["errores"] = formulario.errors
 
         return render(request, 'ferreteria/buscar-bulones.html', context=contexto)
+
+
+#NUEVO CODIGO PARA TP FINAL
+
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView, ListView
+
+class FerreteriaBulonesListView(ListView):
+    model = FerreteriaBulones
+    template_name = 'ferreteria/buloneria-list.html'
+    context_object_name = 'bulones'
+
+class FerreteriaBulonesCreateView(CreateView):
+    model = FerreteriaBulones
+    fields = ['tipo_cabeza', 'tamaño_rosca', 'longitud']
+    template_name = "ferreteria/buloneria-create.html"
+    success_url = "/ferreteria/alta-bulones"  # or reverse_lazy(...)
+
+class FerreteriaBulonesDetailView(DetailView):
+    model = FerreteriaBulones
+    template_name = "ferreteria/buloneria-detail.html"
+
+class FerreteriaBulonesUpdateView(UpdateView):
+    model = FerreteriaBulones
+    fields = ['tipo_cabeza', 'tamaño_rosca', 'longitud']
+    template_name = 'ferreteria/buloneria-update.html'
+    success_url = "/ferreteria/alta-bulones"
+
+from django.urls import reverse_lazy
+class FerreteriaBulonesDeleteView(DeleteView):
+    model = FerreteriaBulones
+    template_name = "ferreteria/buloneria-delete.html"
+    success_url = "/ferreteria/alta-bulones"
+  
+
