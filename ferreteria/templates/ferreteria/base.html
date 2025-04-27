@@ -71,6 +71,18 @@
     </nav>
 </div>
 
+ <!-- Navegación para autenticación -->
+ <div class="nav-section">
+    <div class="nav-title">🔐 Cuenta</div>
+    <nav>
+        {% if user.is_authenticated %}
+            <a href="{% url 'ferreteria:logout' %}">Cerrar sesión ({{ user.username }})</a>
+        {% else %}
+            <a href="{% url 'ferreteria:login' %}">Iniciar sesión</a>
+            <a href="{% url 'ferreteria:signup' %}">Registrarse</a>
+        {% endif %}
+    </nav>
+</div>
 
 
     

@@ -1,6 +1,21 @@
 from django.urls import path
 from django.http import HttpResponse    
-from ferreteria.views import alta_bulones,mostrar_bulones,alta_herramientas,alta_pvc,mostrar_herramienta,mostrar_articulo,buscar_bulones,home,FerreteriaBulonesCreateView,FerreteriaBulonesDeleteView,FerreteriaBulonesDetailView,FerreteriaBulonesListView,FerreteriaBulonesUpdateView
+from ferreteria.views import (alta_bulones,
+                            mostrar_bulones,
+                            alta_herramientas,
+                            alta_pvc,
+                            mostrar_herramienta,
+                            mostrar_articulo,
+                            buscar_bulones,
+                            home,
+                            FerreteriaBulonesCreateView,
+                            FerreteriaBulonesDeleteView,
+                            FerreteriaBulonesDetailView,
+                            FerreteriaBulonesListView,
+                            FerreteriaBulonesUpdateView,
+                            UserLoginView,
+                            UserRegisterView,
+                            logout_view)
 
 app_name="ferreteria"
 
@@ -17,6 +32,11 @@ urlpatterns = [
     path("ferreteria/buloneria-list",FerreteriaBulonesListView.as_view(), name="buloneria-list"),
     path("bulones/<int:pk>", FerreteriaBulonesDetailView.as_view(), name="buloneria-detail"),
     path("bulones/<int:pk>/editar", FerreteriaBulonesUpdateView.as_view(), name="buloneria-update"),
-    path("bulones/<int:pk>/eliminar", FerreteriaBulonesDeleteView.as_view(), name="buloneria-delete")
+    path("bulones/<int:pk>/eliminar", FerreteriaBulonesDeleteView.as_view(), name="buloneria-delete"),
+    path("", UserLoginView.as_view(), name='login'),
+    path('ferreteria/signup/', UserRegisterView.as_view(), name='signup'),
+    path('ferreteria/login/', UserLoginView.as_view(), name='login'),
+    path('logout/', logout_view, name='logout'),  
+
 
 ]
