@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ferreteria'
+    'ferreteria',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/ferreteria/'  # o donde quieras que vayan al iniciar sesión
 LOGOUT_REDIRECT_URL = '/ferreteria/login/'  # opcional
+
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -13,10 +13,11 @@ from ferreteria.views import (alta_bulones,
                             FerreteriaBulonesDetailView,
                             FerreteriaBulonesListView,
                             FerreteriaBulonesUpdateView,
-                            UserLoginView,
-                            UserRegisterView,
-                            logout_view)
+                            acerca_de)
 
+from accounts.views import ( UserLoginView,
+                            UserRegisterView,
+                            logout_view,)
 app_name="ferreteria"
 
 urlpatterns = [
@@ -34,9 +35,8 @@ urlpatterns = [
     path("bulones/<int:pk>/editar", FerreteriaBulonesUpdateView.as_view(), name="buloneria-update"),
     path("bulones/<int:pk>/eliminar", FerreteriaBulonesDeleteView.as_view(), name="buloneria-delete"),
     path("", UserLoginView.as_view(), name='login'),
-    path('ferreteria/signup/', UserRegisterView.as_view(), name='signup'),
-    path('ferreteria/login/', UserLoginView.as_view(), name='login'),
+    path('accounts/signup/', UserRegisterView.as_view(), name='signup'),
+    path('accounts/login/', UserLoginView.as_view(), name='login'),
     path('logout/', logout_view, name='logout'),  
-
-
+    path('ferreteria/acerca-de', acerca_de, name='acerca-de'),
 ]

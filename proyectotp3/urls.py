@@ -20,10 +20,17 @@ from django.http import HttpResponse
 import ferreteria
 from ferreteria.views import buloneria,home
 from django.shortcuts import redirect
-
+from .views import home
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ferreteria/',include('ferreteria.urls')),
-    path('', lambda request: redirect('/ferreteria/', permanent=True)),
+    path('', lambda request: redirect('/ferreteria/home/', permanent=True)),
+    path('accounts/',include('accounts.urls')),
+
 ]
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
