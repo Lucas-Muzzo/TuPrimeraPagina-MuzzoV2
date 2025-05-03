@@ -56,36 +56,95 @@
             <li><a href="{% url 'ferreteria:herramientas' %}">Herramientas</a></li>
             <li><a href="{% url 'ferreteria:accesoriospvc' %}">Accesorios de PVC</a></li>
             <li><a href="{% url 'ferreteria:buloneria' %}">Bulonería</a></li>
+            <li><a href="{% url 'ferreteria:buscar-bulones' %}">Búsqueda de Bulones</a></li>
             <li><a href="{% url 'accounts:login' %}">Sección Empleados</a></li>
+            {% if user.is_authenticated %}
             <li><a href="{% url 'ferreteria:alta-bulones' %}">Alta de Bulones</a></li>
             <li><a href="{% url 'ferreteria:alta-herramientas' %}">Alta de Herramientas</a></li>
             <li><a href="{% url 'ferreteria:alta-pvc' %}">Alta de Artículos PVC</a></li>
-            <li><a href="{% url 'ferreteria:buscar-bulones' %}">Búsqueda de Bulones</a></li>
-            
+            {% endif %}
             
         </ul>
     </nav>
-   <!-- Navegación para vistas basadas en clases -->
-   <div class="nav-section">
-    <div class="nav-title">⚙️ Funciones con CBV</div>
-    <nav>
-        <a href="{% url 'ferreteria:alta-bulones' %}">CBV Alta</a>
-        <a href="{% url 'ferreteria:buloneria-list' %}">CBV Lista</a>
-    </nav>
-</div>
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tu Sitio</title>
+        <style>
+            .logout-button {
+                position: absolute;
+                top: 35px;
+                right: 20px;
+                z-index: 1000; /* Asegura que esté por encima de otros elementos */
+            }
+    
+            .logout-button a {
+                background-color: #575555;
+                color: white;
+                padding: 10px 16px;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: bold;
+                font-family: sans-serif;
+                transition: background-color 0.3s ease;
+            }
+    
+            .logout-button a:hover {
+                background-color: #c82333;
+            }
+        </style>
+    </head>
+    <body>
+    
+        {% if user.is_authenticated %}
+        <div class="logout-button">
+            <a href="{% url 'accounts:logout' %}">Cerrar sesión ({{ user.username }})</a>
+        </div>
+        {% endif %}
+    
+        <!-- Resto de tu contenido -->
+       <!--  <div class="nav-section">
+            <div class="nav-title">🔐 Cuenta</div>
+            <nav>
+                 Puedes dejar vacío o mover esto según tu diseño -->
+         <!--    </nav>
+        </div>
+    
+    </body>
+    </html>-->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  <!-- Navegación para autenticación -->
- <div class="nav-section">
+  <!--<div class="nav-section">
     <div class="nav-title">🔐 Cuenta</div>
     <nav>
         {% if user.is_authenticated %}
                 <a href="{% url 'accounts:logout' %}">Cerrar sesión ({{ user.username }})</a>
-        {% else %}
+
+
+    </nav>           
+  </div>-->
+       <!-- {% else %}
             <a href="{% url 'accounts:login' %}">Iniciar sesión</a>
             <a href="{% url 'accounts:signup' %}">Registrarse</a>
         {% endif %}
     </nav>
-</div>
+</div>-->
 
 
     

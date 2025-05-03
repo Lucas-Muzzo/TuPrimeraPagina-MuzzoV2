@@ -3,15 +3,23 @@
 {% block contenido %}
 
 
-<div>ACA VIENE EL FORMS PARA CARGAR EL ALTA DE BULONES</div>
+<div>SECCION EMPLEADOS: ALTA DE PRODUCTOS DE BULONERIA</div>
 
-<form method="POST">
+<!--<form method="POST">
     {% csrf_token %}
     {{ formulario.as_p }}
     <button type="submit"> Enviar formulario </button>
 
 
-</form>
+</form>-->
+
+<div class="nav-section">
+    <div class="nav-title">⚙️¿Qué operacion desea realizar?</div>
+    <nav>
+        <a href="{% url 'ferreteria:buloneria-create' %}">Dar de alta un bulon</a>
+        <a href="{% url 'ferreteria:buloneria-list' %}">Modificar lista de bulones</a>
+    </nav>
+</div>
 
 
 {% endblock %}
