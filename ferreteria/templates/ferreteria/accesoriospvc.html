@@ -2,19 +2,27 @@
 
 {% block contenido %}
 
+    <div style="width: 100%; text-align: center; padding: 20px;">
+        <h1 style="color: darkgreen; font-size: 2.5em;">🔩 ¡Encuentra los artículos de PVC que estás buscando!</h1>
+        <p style="font-size: 1.2em; color: gray;">Explora nuestra variedad de accesorios y conexiones de PVC.</p>
+    </div>
 
-<h1>¡ENCONTRA LOS ARTICULOS DE PVC QUE ESTAS BUSCANDO!:</h1> 
+    <div style="max-width: 800px; margin: auto; padding: 20px; background-color: #f8f8f8; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
+        <h2 style="color: steelblue; text-align: center;">📋 Lista de Artículos de PVC</h2>
+        
+        <ul style="list-style: none; padding: 0;">
+            {% for articulo in lista_de_articulos %}
+                <li style="background-color: white; padding: 15px; margin-bottom: 10px; border-radius: 5px; box-shadow: 0px 0px 5px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between;">
+                    <span style="font-size: 1.1em;">🛠️ {{ articulo.accesorio }} - <strong>{{ articulo.rosca }} mm</strong></span>
+                </li>
+            {% empty %}
+                <li style="text-align: center; color: red;">⚠ No hay artículos de PVC disponibles.</li>
+            {% endfor %}
+        </ul>
+    </div>
 
-<div>
-    <ul>
-        {% for articulo in lista_de_articulos %}
-           
-                <li>{{ articulo.accesorio }} - {{ articulo.rosca}} </li>
+    <div style="text-align: center; padding-top: 20px;">
+        {{ listapvc }}
+    </div>
 
-    
-        {% endfor %}
-    </ul>
-</div>
-
-{{listapvc}}
 {% endblock %}

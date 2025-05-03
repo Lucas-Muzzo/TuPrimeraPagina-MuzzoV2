@@ -2,22 +2,23 @@
 
 {% block contenido %}
 
+    <div style="width: 100%; text-align: center; padding: 20px;">
+        <h1 style="color: darkred; font-size: 2.5em;">🔩 Listado de Bulones</h1>
+        <p style="font-size: 1.2em; color: gray;">Encuentra el bulón perfecto para tu proyecto.</p>
+    </div>
 
-<div>
-<H2>LISTADO DE BULONES</H2>
-</div>
-
-<div>
-    <ul>
-        {% for bulon in lista_de_bulones %}
-           
-                <li>{{ bulon.tipo_cabeza }} - {{ bulon.tamaño_rosca }} - {{ bulon.longitud }}</li>
-
-    
-        {% endfor %}
-    </ul>
-</div>
-
-
+    <div style="max-width: 800px; margin: auto; padding: 20px; background-color: #f8f8f8; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
+        <h2 style="color: darkblue; text-align: center;">📌 Detalle de Bulones</h2>
+        
+        <ul style="list-style: none; padding: 0;">
+            {% for bulon in lista_de_bulones %}
+                <li style="background-color: white; padding: 15px; margin-bottom: 10px; border-radius: 5px; box-shadow: 0px 0px 5px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between;">
+                    <span style="font-size: 1.1em;">🔧 Tipo: <strong>{{ bulon.tipo_cabeza }}</strong> | Rosca: <strong>{{ bulon.tamaño_rosca }}</strong> mm | Longitud: <strong>{{ bulon.longitud }}</strong> mm</span>
+                </li>
+            {% empty %}
+                <li style="text-align: center; color: red;">⚠ No hay bulones registrados.</li>
+            {% endfor %}
+        </ul>
+    </div>
 
 {% endblock %}

@@ -2,53 +2,58 @@
 
 {% block contenido %}
 
+    <div style="width: 100%; text-align: center; padding: 20px;">
+        <h1 style="color: darkred; font-size: 2.5em;">🔎 Busque el bulón que necesita según el tipo de cabeza</h1>
+        <p style="font-size: 1.2em; color: gray;">Ingrese los datos y encuentre el bulón ideal para su proyecto.</p>
+    </div>
 
-<div>BUSQUE EL BULON QUE NECESITA DE ACUERDO AL TIPO DE CABEZA</div>
+    <div style="max-width: 600px; margin: auto; padding: 20px; background-color: #f8f8f8; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
+        <form method="POST" style="text-align: center;">
+            {% csrf_token %}
+            <div style="margin-bottom: 15px;">
+                {{ formulario.as_p }}
+            </div>
+            <button type="submit" style="padding: 10px 20px; font-size: 1.1em; background-color: darkred; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                🔍 Buscar
+            </button>
+        </form>
+    </div>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ formulario.as_p }}
-    <button type="submit"> BUSCAR </button>
-
-
-</form>
-
-{% if bulones %}
-<h2>Resultados de la búsqueda:</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Tipo de Cabeza</th>
-            <th>Tamaño de Rosca</th>
-            <th>Longitud</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for bulon in bulones %}
-        <tr>
-            <td>{{ bulon.tipo_cabeza }}</td>
-            <td>{{ bulon.tamaño_rosca }}</td>
-            <td>{{ bulon.longitud }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% elif errores %}
-<h2>Errores:</h2>
-<ul>
-    {% for campo, mensajes in errores.items %}
-        {% for mensaje in mensajes %}
-            <li>{{ campo }}: {{ mensaje }}</li>
-        {% endfor %}
-    {% endfor %}
-</ul>
-{% else %}
-<p>No se encontraron coincidencias.</p>
-{% endif %}
-</body>
-</html>
-
-
-
+    {% if bulones %}
+        <div style="max-width: 800px; margin: auto; padding: 20px;">
+            <h2 style="color: darkblue; text-align: center;">📌 Resultados de la búsqueda</h2>
+            <table style="width: 100%; border-collapse: collapse; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
+                <thead style="background-color: steelblue; color: white;">
+                    <tr>
+                        <th style="padding: 10px; text-align: left;">Tipo de Cabeza</th>
+                        <th style="padding: 10px; text-align: left;">Tamaño de Rosca</th>
+                        <th style="padding: 10px; text-align: left;">Longitud</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bulon in bulones %}
+                        <tr style="background-color: white; border-bottom: 1px solid #ddd;">
+                            <td style="padding: 10px;">{{ bulon.tipo_cabeza }}</td>
+                            <td style="padding: 10px;">{{ bulon.tamaño_rosca }} mm</td>
+                            <td style="padding: 10px;">{{ bulon.longitud }} mm</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% elif errores %}
+        <div style="max-width: 600px; margin: auto; padding: 20px; text-align: center; color: red;">
+            <h2>⚠ Errores encontrados</h2>
+            <ul style="list-style: none; padding: 0;">
+                {% for campo, mensajes in errores.items %}
+                    {% for mensaje in mensajes %}
+                        <li style="padding: 5px;">{{ campo }}: {{ mensaje }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <p style="text-align: center; color: gray; font-size: 1.2em;">No se encontraron coincidencias.</p>
+    {% endif %}
 
 {% endblock %}

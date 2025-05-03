@@ -1,17 +1,25 @@
 {% extends 'ferreteria/base.html' %}
 
 {% block contenido %}
-<section class="about-section">
-    <div class="container">
-        <h1 class="section-title">Acerca de Nosotros</h1>
-        <div class="content-wrapper">
-            <img src="/static/img/ferreteria.jpg" alt="Imagen de Ferretería" class="about-image">
-            <div class="text-content">
-                <p>Bienvenidos a mi emprendimiento, donde la innovación y la pasión se encuentran para ofrecerte las mejores soluciones en herramientas y productos de ferretería. Soy Lucas Muzzo, ingeniero industrial, y estoy comprometido con brindar productos de alta calidad y un servicio excepcional.</p>
-                <p>Desde el inicio, he trabajado para construir un espacio que inspire confianza, permita la creatividad y empodere a profesionales y aficionados en sus proyectos. Este negocio es fruto de mi visión de crear algo único, con el objetivo de acompañarte en cada paso de tus desafíos.</p>
-                <p>Nos especializamos en la venta para industrias, particularmente en el área de bulones, herramientas y accesorios de PVC. Nuestro objetivo es garantizar que encuentres productos confiables y duraderos para satisfacer las necesidades de tu negocio.</p>
-            </div>
+
+    <section style="width: 100%; text-align: center; padding: 30px; background-color: #f8f8f8; border-radius: 8px;">
+        <h1 style="color: darkblue; font-size: 2.5em;">🏗️ Acerca de Nosotros</h1>
+        <p style="font-size: 1.2em; color: gray;">Conoce nuestra historia y compromiso con la excelencia en ferretería.</p>
+    </section>
+
+    <div style="max-width: 900px; margin: auto; padding: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+        
+        <div style="flex: 1; min-width: 50%; padding-right: 20px;">
+            <p style="font-size: 1.1em; color: #333;">Bienvenidos a mi emprendimiento, donde la innovación y la pasión se unen para ofrecerte soluciones en herramientas y productos de ferretería.</p>
+            <p style="font-size: 1.1em; color: #333;">Soy <strong>Lucas Muzzo</strong>, ingeniero industrial, y estoy comprometido con brindar productos de alta calidad y un servicio excepcional.</p>
+            <p style="font-size: 1.1em; color: #333;">Desde el inicio, he trabajado para construir un espacio que inspire confianza, permita la creatividad y empodere a profesionales y aficionados en sus proyectos.</p>
+            <p style="font-size: 1.1em; color: #333;">Nos especializamos en la venta para industrias, particularmente en el área de <strong>bulones, herramientas y accesorios de PVC</strong>. Nuestro objetivo es garantizar productos confiables y duraderos para tu negocio.</p>
         </div>
+
+        <div style="text-align: right; flex: 1; min-width: 40%;">
+            <img src="/media/avatares/ferreteriamuzzo.png" alt="Ferretería Muzzo" style="width: 300px; max-width: 100%; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.2);">
+        </div>
+
     </div>
-</section>
+
 {% endblock %}

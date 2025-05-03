@@ -2,24 +2,17 @@
 
 {% block contenido %}
 
+    <div style="width: 100%; text-align: center; padding: 20px;">
+        <h1 style="color: darkblue; font-size: 2.5em;">🛠 Sección Empleados: Alta de Productos de Bulonería</h1>
+        <p style="font-size: 1.2em; color: gray;">Agregue nuevos productos y gestione la lista de bulones de manera eficiente.</p>
+    </div>
 
-<div>SECCION EMPLEADOS: ALTA DE PRODUCTOS DE BULONERIA</div>
-
-<!--<form method="POST">
-    {% csrf_token %}
-    {{ formulario.as_p }}
-    <button type="submit"> Enviar formulario </button>
-
-
-</form>-->
-
-<div class="nav-section">
-    <div class="nav-title">⚙️¿Qué operacion desea realizar?</div>
-    <nav>
-        <a href="{% url 'ferreteria:buloneria-create' %}">Dar de alta un bulon</a>
-        <a href="{% url 'ferreteria:buloneria-list' %}">Modificar lista de bulones</a>
-    </nav>
-</div>
-
+    <div style="max-width: 600px; margin: auto; padding: 20px; background-color: #f8f8f8; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); text-align: center;">
+        <h2 style="color: rgb(227, 218, 218);">📋 ¿Qué operación desea realizar?</h2>
+        <nav style="display: flex; flex-direction: column; gap: 10px;">
+            <a href="{% url 'ferreteria:buloneria-create' %}" style="display: inline-block; padding: 12px 20px; font-size: 1.1em; background-color: darkgreen; color: white; text-decoration: none; border-radius: 5px; box-shadow: 0px 0px 5px rgba(0,0,0,0.2);">✅ Dar de alta un bulón</a>
+            <a href="{% url 'ferreteria:buloneria-list' %}" style="display: inline-block; padding: 12px 20px; font-size: 1.1em; background-color: steelblue; color: white; text-decoration: none; border-radius: 5px; box-shadow: 0px 0px 5px rgba(0,0,0,0.2);">🛠 Modificar lista de bulones</a>
+        </nav>
+    </div>
 
 {% endblock %}

@@ -2,16 +2,21 @@
 
 {% block contenido %}
 
+    <div style="width: 100%; text-align: center; padding: 20px;">
+        <h1 style="color: darkblue; font-size: 2.5em;">🛠 Registrar una nueva herramienta</h1>
+        <p style="font-size: 1.2em; color: gray;">Complete los campos para agregar una herramienta al sistema.</p>
+    </div>
 
-<div>REGISTRE LOS ATRIBUTOS DE LA HERRAMIENTA A REGISTRAR</div>
-
-<form method="POST">
-    {% csrf_token %}
-    {{ formulario.as_p }}
-    <button type="submit"> Enviar formulario </button>
-
-
-</form>
-
+    <div style="max-width: 600px; margin: auto; padding: 20px; background-color: #f8f8f8; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
+        <form method="POST" style="text-align: center;">
+            {% csrf_token %}
+            <div style="margin-bottom: 15px; text-align: left;">
+                {{ formulario.as_p }}
+            </div>
+            <button type="submit" style="padding: 12px 20px; font-size: 1.1em; background-color: darkgreen; color: white; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0px 0px 5px rgba(0,0,0,0.2);">
+                ✅ Enviar formulario
+            </button>
+        </form>
+    </div>
 
 {% endblock %}
