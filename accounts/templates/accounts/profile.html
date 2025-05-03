@@ -1,0 +1,24 @@
+{% extends 'ferreteria/base.html' %}
+
+{% block contenido %}
+<h3 style="text-align: center; color: steelblue;">👤 Mi Perfil</h3>
+
+<div style="max-width: 400px; margin: 2rem auto; text-align: center;">
+    <p><strong>Usuario:</strong> {{ user.username }}</p>
+    <p><strong>Nombre:</strong> {{ user.first_name }}</p>
+    <p><strong>Apellido:</strong> {{ user.last_name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    {% if user.avatar.imagen %}
+        <p>Avatar actual:</p>
+        <p><img src="{{ user.avatar.imagen.url }}" width="100" style="border-radius: 50%;"></p>
+    {% endif %}
+
+    <h3 style="text-align: center; color: steelblue;">⚙️ Editar perfil</h3>
+
+    <div style="text-align: center; margin-top: 1rem;">
+        <a href="{% url 'accounts:edit' %}" style="text-decoration: none;">
+            <button type="button">Editar perfil</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

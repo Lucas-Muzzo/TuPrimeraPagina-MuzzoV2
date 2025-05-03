@@ -123,10 +123,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/ferreteria/'  # o donde quieras que vayan al iniciar sesión
+# o donde quieras que vayan al iniciar sesión
 LOGOUT_REDIRECT_URL = '/ferreteria/login/'  # opcional
-
+LOGIN_REDIRECT_URL = '/accounts/profile/'
 import os
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'

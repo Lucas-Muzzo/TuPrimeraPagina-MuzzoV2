@@ -52,14 +52,16 @@
     <nav>
         <ul>
             <li><a href="{% url 'ferreteria:home' %}">Inicio</a></li>
+            <li><a href="{% url 'ferreteria:acerca-de' %}">Acerca de nosotros</a></li>
             <li><a href="{% url 'ferreteria:herramientas' %}">Herramientas</a></li>
             <li><a href="{% url 'ferreteria:accesoriospvc' %}">Accesorios de PVC</a></li>
             <li><a href="{% url 'ferreteria:buloneria' %}">Bulonería</a></li>
+            <li><a href="{% url 'accounts:login' %}">Sección Empleados</a></li>
             <li><a href="{% url 'ferreteria:alta-bulones' %}">Alta de Bulones</a></li>
             <li><a href="{% url 'ferreteria:alta-herramientas' %}">Alta de Herramientas</a></li>
             <li><a href="{% url 'ferreteria:alta-pvc' %}">Alta de Artículos PVC</a></li>
             <li><a href="{% url 'ferreteria:buscar-bulones' %}">Búsqueda de Bulones</a></li>
-            <li><a href="{% url 'ferreteria:acerca-de' %}">Acerca de nosotros</a></li>
+            
             
         </ul>
     </nav>
@@ -77,7 +79,7 @@
     <div class="nav-title">🔐 Cuenta</div>
     <nav>
         {% if user.is_authenticated %}
-            <a href="{% url 'accounts:logout' %}">Cerrar sesión ({{ user.username }})</a>
+                <a href="{% url 'accounts:logout' %}">Cerrar sesión ({{ user.username }})</a>
         {% else %}
             <a href="{% url 'accounts:login' %}">Iniciar sesión</a>
             <a href="{% url 'accounts:signup' %}">Registrarse</a>
