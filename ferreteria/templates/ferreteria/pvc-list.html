@@ -1,0 +1,21 @@
+{% extends 'ferreteria/base.html' %}
+
+  <!-- Funciones CBV -->
+{% block contenido %}
+
+<h3 style="color: steelblue; text-align: center;">📑 Lista de articulos de PVC</h3>
+
+ <ul style="max-width: 600px; margin: 2rem auto; list-style: none; padding: 0;">
+    {% for articulos in articulos %}
+        <li style="margin-bottom: 1rem;">
+            <strong>{{articulos.accesorio }}</strong>  – {{ articulos.rosca }} " <br>
+            <a href="{% url 'ferreteria:pvc-detail' articulos.pk %}">🔍 Ver</a> |
+            <a href="{% url 'ferreteria:pvc-update' articulos.pk %}">✏️ Editar</a> |
+            <a href="{% url 'ferreteria:pvc-delete' articulos.pk %}">🗑 Eliminar</a>
+        </li>
+    {% empty %}
+        <li>No hay articulos PVC registrados.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

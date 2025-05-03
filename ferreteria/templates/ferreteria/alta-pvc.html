@@ -3,15 +3,23 @@
 {% block contenido %}
 
 
-<div>REGISTRE LOS ATRIBUTOS DEL ARTICULO PVC  A REGISTRAR</div>
+<div>SECCION EMPLEADOS: ALTA DE PRODUCTOS DE PVC</div>
 
-<form method="POST">
+<!--<form method="POST">
     {% csrf_token %}
     {{ formulario.as_p }}
     <button type="submit"> Enviar formulario </button>
 
 
-</form>
+</form>-->
+
+<div class="nav-section">
+    <div class="nav-title">⚙️¿Qué operacion desea realizar?</div>
+    <nav>
+        <a href="{% url 'ferreteria:pvc-create' %}">Dar de alta un Articulo PVC</a>
+        <a href="{% url 'ferreteria:pvc-list' %}">Modificar lista de Articulos PVC</a>
+    </nav>
+</div>
 
 
 {% endblock %}

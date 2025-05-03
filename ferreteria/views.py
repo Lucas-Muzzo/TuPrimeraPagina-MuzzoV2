@@ -257,29 +257,30 @@ class FerreteriaBulonesDeleteView(DeleteView):
     template_name = "ferreteria/buloneria-delete.html"
     success_url = "/ferreteria/alta-bulones"
   
+#ARTICULOS PVC
+class FerreteriaPvcListView(ListView):
+    model = FerreteriaPvc
+    template_name = 'ferreteria/pvc-list.html'
+    context_object_name = 'articulos'
 
-#CODIGO PARA EL LOG IN Y CREACION DE USUARIO
-from django.contrib.auth.views import LoginView, LogoutView
-from django.views.generic.edit import CreateView
-from django.contrib.auth.forms import UserCreationForm
+class FerreteriaPvcCreateView(CreateView):
+    model = FerreteriaPvc
+    fields = ['accesorio', 'rosca']
+    template_name = "ferreteria/pvc-create.html"
+    success_url = "/ferreteria/pvc-list"  # or reverse_lazy(...)
+
+class FerreteriaPvcDetailView(DetailView):
+    model = FerreteriaPvc
+    template_name = "ferreteria/pvc-detail.html"
+
+class FerreteriaPvcUpdateView(UpdateView):
+    model = FerreteriaPvc
+    fields = ['accesorio', 'rosca']
+    template_name = 'ferreteria/pvc-update.html'
+    success_url = "/ferreteria/alta-pvc"
+
 from django.urls import reverse_lazy
-from django.contrib.auth.models import User
-
-from django.contrib.auth import logout
-from django.shortcuts import redirect
-
-def logout_view(request):
-    logout(request)
-    return redirect('ferreteria:login')
-
-    
-    
-class UserRegisterView(CreateView):
-    template_name = 'ferreteria/signup.html'
-    form_class = UserCreationForm
-    success_url = reverse_lazy('ferreteria:login')
-
-
-class UserLoginView(LoginView):
-
-    template_name = 'ferreteria/login.html'
+class FerreteriaPvcDeleteView(DeleteView):
+    model = FerreteriaPvc
+    template_name = "ferreteria/pvc-delete.html"
+    success_url = "/ferreteria/alta-pvc"
